@@ -1,0 +1,125 @@
+2024-10-06 18:44:10.948906-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS nomes (id INT [*]AUTO)_INCREMENT PRIMARY KEY, nome VARCHAR(255) NOT NULL)"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS nomes (id INT AUTO)_INCREMENT PRIMARY KEY, nome VARCHAR(255) NOT NULL) [42001-224]
+2024-10-06 18:47:16.073280-03:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/carli/Downloads/lab5/lab5db.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.get(DbException.java:212)
+	at com.h2database@2.2.224/org.h2.message.DbException.convert(DbException.java:407)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at com.h2database@2.2.224/org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at com.h2database@2.2.224/org.h2.engine.Database.<init>(Database.java:326)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:92)
+	at com.h2database@2.2.224/org.h2.engine.Engine.openSession(Engine.java:222)
+	at com.h2database@2.2.224/org.h2.engine.Engine.createSession(Engine.java:201)
+	at com.h2database@2.2.224/org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at com.h2database@2.2.224/org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at com.h2database@2.2.224/org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at lab5/lab5.GerenciadorNomesBD.<init>(GerenciadorNomesBD.java:12)
+	at lab5/lab5.Main.main(Main.java:25)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/carli/Downloads/lab5/lab5db.mv.db [2.2.224/7]" [50000-224]
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at com.h2database@2.2.224/org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 19 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/carli/Downloads/lab5/lab5db.mv.db [2.2.224/7]
+	at com.h2database@2.2.224/org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at com.h2database@2.2.224/org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at com.h2database@2.2.224/org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 13 more
+2024-10-06 18:51:46.131006-03:00 jdbc[3]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:85)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:217)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:134)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 13 more
+2024-10-06 18:51:46.136006-03:00 jdbc[3]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:85)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:217)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:134)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 13 more
+2024-10-06 18:51:46.141162-03:00 jdbc[3]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:85)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:217)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:134)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:291)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1038)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebThread.process(WebThread.java:154)
+	at org.h2.server.web.WebThread.run(WebThread.java:103)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 13 more
